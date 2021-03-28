@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LockScript : MonoBehaviour
+public class LockHardScript : MonoBehaviour
 {
     public int LockNum;
     public int currNumChoose = 0;
@@ -11,16 +11,18 @@ public class LockScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(GetComponentInParent<LockCheck>().currLockNum == LockNum)
+        
+        if (GetComponentInParent<LockCheck>().currLockNum == LockNum)
         {
             arrow.SetActive(true);
         }
+
         else
         {
             arrow.SetActive(false);
@@ -32,6 +34,7 @@ public class LockScript : MonoBehaviour
             {
                 gameObject.transform.Rotate(36.0f, 0.0f, 0.0f, Space.World);
                 currNumChoose++;
+
                 if (currNumChoose > 9)
                 {
                     currNumChoose = 0;
@@ -41,18 +44,19 @@ public class LockScript : MonoBehaviour
             {
                 gameObject.transform.Rotate(-36.0f, 0.0f, 0.0f, Space.World);
                 currNumChoose--;
+
                 if (currNumChoose < 0)
                 {
                     currNumChoose = 9;
                 }
             }
         }
-        switch(LockNum)
+        switch (LockNum)
         {
             case 1:
-                if(currNumChoose == GetComponentInParent<LockCheck>().keyCodes[0])
+                if (currNumChoose == GetComponentInParent<LockCheck>().keyCodes[0])
                 {
-                    if(!rightNum)
+                    if (!rightNum)
                     {
                         GetComponentInParent<LockCheck>().winCondition++;
                     }
@@ -60,7 +64,7 @@ public class LockScript : MonoBehaviour
                 }
                 else
                 {
-                    if(rightNum)
+                    if (rightNum)
                     {
                         GetComponentInParent<LockCheck>().winCondition--;
                     }
@@ -87,6 +91,42 @@ public class LockScript : MonoBehaviour
                 break;
             case 3:
                 if (currNumChoose == GetComponentInParent<LockCheck>().keyCodes[2])
+                {
+                    if (!rightNum)
+                    {
+                        GetComponentInParent<LockCheck>().winCondition++;
+                    }
+                    rightNum = true;
+                }
+                else
+                {
+                    if (rightNum)
+                    {
+                        GetComponentInParent<LockCheck>().winCondition--;
+                    }
+                    rightNum = false;
+                }
+                break;
+            case 4:
+                if (currNumChoose == GetComponentInParent<LockCheck>().keyCodes[3])
+                {
+                    if (!rightNum)
+                    {
+                        GetComponentInParent<LockCheck>().winCondition++;
+                    }
+                    rightNum = true;
+                }
+                else
+                {
+                    if (rightNum)
+                    {
+                        GetComponentInParent<LockCheck>().winCondition--;
+                    }
+                    rightNum = false;
+                }
+                break;
+            case 5:
+                if (currNumChoose == GetComponentInParent<LockCheck>().keyCodes[4])
                 {
                     if (!rightNum)
                     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LockScript : MonoBehaviour
+public class LockMediumScript : MonoBehaviour
 {
     public int LockNum;
     public int currNumChoose = 0;
@@ -11,13 +11,13 @@ public class LockScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(GetComponentInParent<LockCheck>().currLockNum == LockNum)
+        if (GetComponentInParent<LockCheck>().currLockNum == LockNum)
         {
             arrow.SetActive(true);
         }
@@ -25,7 +25,6 @@ public class LockScript : MonoBehaviour
         {
             arrow.SetActive(false);
         }
-
         if (GetComponentInParent<LockCheck>().isInputEnabled)
         {
             if (Input.GetKeyDown("down") && GetComponentInParent<LockCheck>().currLockNum == LockNum)
@@ -47,12 +46,12 @@ public class LockScript : MonoBehaviour
                 }
             }
         }
-        switch(LockNum)
+        switch (LockNum)
         {
             case 1:
-                if(currNumChoose == GetComponentInParent<LockCheck>().keyCodes[0])
+                if (currNumChoose == GetComponentInParent<LockCheck>().keyCodes[0])
                 {
-                    if(!rightNum)
+                    if (!rightNum)
                     {
                         GetComponentInParent<LockCheck>().winCondition++;
                     }
@@ -60,7 +59,7 @@ public class LockScript : MonoBehaviour
                 }
                 else
                 {
-                    if(rightNum)
+                    if (rightNum)
                     {
                         GetComponentInParent<LockCheck>().winCondition--;
                     }
@@ -87,6 +86,24 @@ public class LockScript : MonoBehaviour
                 break;
             case 3:
                 if (currNumChoose == GetComponentInParent<LockCheck>().keyCodes[2])
+                {
+                    if (!rightNum)
+                    {
+                        GetComponentInParent<LockCheck>().winCondition++;
+                    }
+                    rightNum = true;
+                }
+                else
+                {
+                    if (rightNum)
+                    {
+                        GetComponentInParent<LockCheck>().winCondition--;
+                    }
+                    rightNum = false;
+                }
+                break;
+            case 4:
+                if (currNumChoose == GetComponentInParent<LockCheck>().keyCodes[3])
                 {
                     if (!rightNum)
                     {
