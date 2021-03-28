@@ -7,11 +7,11 @@ public class LockHardScript : MonoBehaviour
     public int LockNum;
     public int currNumChoose = 0;
     public bool rightNum = false;
-    public GameObject arrow;
+    public GameObject arrow, lockMove;
     // Start is called before the first frame update
     void Start()
     {
-
+        lockMove = GameObject.FindGameObjectWithTag("LockMove");
     }
 
     // Update is called once per frame
@@ -32,6 +32,7 @@ public class LockHardScript : MonoBehaviour
         {
             if (Input.GetKeyDown("down") && GetComponentInParent<LockCheck>().currLockNum == LockNum)
             {
+                lockMove.GetComponent<AudioSource>().Play();
                 gameObject.transform.Rotate(36.0f, 0.0f, 0.0f, Space.World);
                 currNumChoose++;
 
@@ -42,6 +43,7 @@ public class LockHardScript : MonoBehaviour
             }
             if (Input.GetKeyDown("up") && GetComponentInParent<LockCheck>().currLockNum == LockNum)
             {
+                lockMove.GetComponent<AudioSource>().Play();
                 gameObject.transform.Rotate(-36.0f, 0.0f, 0.0f, Space.World);
                 currNumChoose--;
 

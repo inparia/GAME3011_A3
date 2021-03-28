@@ -6,6 +6,7 @@ public class ButtonBehaviours : MonoBehaviour
 {
     public GameManager gameManager;
     public Button buttonOne, buttonTwo, buttonThree;
+    public GameObject panel;
     // Start is called before the first frame update
     void Start()
     {
@@ -55,5 +56,6 @@ public class ButtonBehaviours : MonoBehaviour
     {
         gameManager.GenerateLocks();
         gameObject.SetActive(false);
+        panel.SetActive(true);
     }
 }

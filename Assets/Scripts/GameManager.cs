@@ -15,7 +15,8 @@ public class GameManager : MonoBehaviour
     public bool gameWin = false;
     public bool isInputEnabled = true;
     public Difficulty difficulty;
-    public GameObject lockOne, lockTwo, lockThree, pole, canvas;
+    public GameObject lockOne, lockTwo, lockThree, pole, canvas, barrel, panel;
+    public float gameTimer;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +30,7 @@ public class GameManager : MonoBehaviour
         difficulty = Difficulty.EASY;
         gameWin = false;
         isInputEnabled = true;
+        panel.SetActive(false);
     }
     public void GenerateLocks()
     {
@@ -43,6 +45,7 @@ public class GameManager : MonoBehaviour
                 break;
             case Difficulty.HARD:
                 var tempLockThree = Instantiate(lockThree, new Vector3(0, 0, 0), Quaternion.identity);
+                var tempBarrel = Instantiate(barrel, new Vector3(-7, -3, 0), Quaternion.identity);
                 break;
         }
 
